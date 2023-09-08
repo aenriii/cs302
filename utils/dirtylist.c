@@ -1,6 +1,6 @@
 #include "./dirtylist.h"
 #include "./logging.h"
-#include "./types.h"
+#include "./macros.h"
 #include <stdlib.h>
 #include <string.h>
 
@@ -31,7 +31,7 @@ int dirtylist_grow(void *_self, int capacity) {
         WARN("Cannot grow to capacity %d, which is less than or equal to current capacity %d\n", capacity, self->capacity);
         return -1;
     }
-    DEBUG("Growing from %d to %d\n", self->capacity, capacity);
+    DEBUG("Growing from %d to %d", self->capacity, capacity);
     void* newItems = malloc(capacity * self->itemSize);
     memcpy(newItems, self->items, self->count * self->itemSize);
     free(self->items);
@@ -47,7 +47,7 @@ int dirtylist_add(void *_self, void* item) {
 
     if (self->count == self->capacity) {
         if (self->grow(self, self->capacity * DIRTYLIST_GROWTH_FACTOR) != 0) {
-            ERROR("Failed to grow DirtyList\n");
+            ERROR("Failed to grow DirtyList");
             return -1;
         }
     }
@@ -68,7 +68,7 @@ int dirtylist_remove(void *_self, void* item) {
         }
     }
     if (index == -1) {
-        WARN("Item not found in DirtyList\n");
+        WARN("Item not found in DirtyList");
         return -1;
     }
     for (int i = index; i < self->count - 1; i++) {

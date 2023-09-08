@@ -1,11 +1,16 @@
 # hi! this is my repo for cs302
 
+
 i know im very much overcomplicating this but its really funny to me
 so i keep doing it anyways.
 
 in this repo you'll find `utils`, a personal library of sorts that i
 use for all my projects, and `assignment-num` projects, which are
 assignments for cs302.
+
+**i turned off copilot for this, all of this code is hand written**
+
+## makefile magic
 
 ### building all assignments
 

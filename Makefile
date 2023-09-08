@@ -15,7 +15,7 @@ compile_all_assignments: assure_utils
 	@for assignment in assignment-*/ ; do \
 		echo "Compiling: $$assignment"; \
 		cd $$assignment; \
-		gcc *.c utils/**.c -o $$assignment; \
+		gcc *.c utils/**.c -o $$(basename $$assignment); \
 		cd ..; \
 	done
 
