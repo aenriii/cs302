@@ -47,4 +47,3 @@
 #define ERROR(...)
 #define FATAL(...)
 #endif
-

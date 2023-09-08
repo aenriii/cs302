@@ -26,4 +26,3 @@ int dirtylist_clear(void* self);
 int dirtylist_destroy(void* self);
 
 #define DIRTYLIST 0x00000001
-

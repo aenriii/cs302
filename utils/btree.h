@@ -55,4 +55,3 @@ int bstree_node_sorted(void *_self);
 
 #define BSTREE 0x00000002
 #define BSTREE_NODE 0x00000003
-
