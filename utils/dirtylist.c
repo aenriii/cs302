@@ -51,7 +51,7 @@ int dirtylist_add(void *_self, void* item) {
             return -1;
         }
     }
-    memcpy(self->items + (self->count * self->itemSize), item, self->itemSize);
+    memcpy((self->items) + (self->count * self->itemSize), item, self->itemSize);
     self->count++;
     return 0;
 }

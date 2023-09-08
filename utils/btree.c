@@ -24,8 +24,8 @@ int find_and_pop_lowest_value(BSTreeNode *node, BSTreeNode *parent) {
             // might have ub, but idc for now.
             if (prevNode->right != NULL && prevNode->right->value == currentNode->value) {
                 int val = currentNode->value;
-                free(currentNode);
                 prevNode->right = currentNode->right;
+                free(currentNode);                
                 return val;
             }
             prevNode->left = currentNode->right;
@@ -350,8 +350,6 @@ int bstree_node_empty(void *_self) {
 
 int bstree_node_sorted(void *_self) {
     FLASH(_self, self, BSTreeNode, BSTREE_NODE)
-
-    int sorted = 0;
 
     if (!(self->left == NULL)) {
         if (self->left->value > self->value) {

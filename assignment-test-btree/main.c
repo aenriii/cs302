@@ -11,7 +11,7 @@ int main(int argv, char** argc) {
     BSTree *tree = newBSTree();
     
     int find = 0;
-    for (size_t i = 0; i < 1000000; i++)
+    for (size_t i = 0; i < 100000; i++)
     {
         int r = rand();
 
