@@ -55,16 +55,32 @@ void print(char* chars) {
 }
 
 void ppermutes(int *arr, int i, int n) {
-    if (!i<n) {
+    if (i==n) {
+        int evensSeen = 0;
+        for (int j = 0; j < n; j++) {
+            if (arr[j] & 1) {
+                if (evensSeen) {
+                    return;
+                }
+            } else {
+                evensSeen += 1;
+            }
+        }
         for (int j = 0; j < n; j++) {
             printf("%d", arr[j]);
         }
         printf("\n");
+        return;
     }
-    return;
 
     int t;
     for (int j = i; j < n; j++) {
+        t = arr[i];
+        arr[i] = arr[j];
+        arr[j] = t;
+
+        ppermutes(arr, i+1, n);
+
         t = arr[i];
         arr[i] = arr[j];
         arr[j] = t;
@@ -102,8 +118,8 @@ int main() {
     // DEBUG("deduplicate_unsafe...")
     int dedup = dl->deduplicate_unsafe(dl, sizeof( char ) * count_chars );
     // DEBUG("filter_bbs...")
-    int removed = dl->filter(dl, filter_bbs);
-    dl->for_each(dl, print);
+    int removed = dl->filter(dl, (bool (*) (void*)) filter_bbs);
+    dl->for_each(dl, (void (*) (void*)) print);
     // printf("dl->count -> %d\n", old_count);
     // printf("dl->filter(dl->deduplicate_unsafe(dl, sizeof( char ) * count_chars )) -> %d\n", dedup);
     // printf("dl->filter(dl, filter_bbs) -> %d\n", removed);
@@ -111,7 +127,13 @@ int main() {
 
 
     printf("Enter n for \"Print all permutations from 1, 2, ..., n in which every odd number appears before every even number\"> ");
+
     int n = 0;
     scanf("%d", &n);
+
+    int *arr = (int*) malloc(n * sizeof(int));
+    for (int i = 0; i < n; i++) arr[i] = i+1;
+
+    ppermutes(arr, 0, n);
 
 }
