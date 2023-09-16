@@ -2,7 +2,8 @@
     "files.associations": {
         "dirtylist.h": "c",
         "stdlib.h": "c",
-        "ios": "c"
+        "ios": "c",
+        "random": "c"
     },
     "C_Cpp.default.compilerPath": "/usr/bin/gcc"
 }
